@@ -48,7 +48,9 @@ class LuhnUtil:
                     for prefix in prefixes:
                         if prefixOfNumber.startswith("4"):
                             cardInfo["possible_banks"] = card_types["4"]
-                        # Should allow mastercard, AME, etc to be found but still doesnt work... Fix Soon?
+                        elif prefixOfNumber.startswith("5"):
+                            cardInfo["possible_banks"] = card_types[("51","52","53","54","55")]
+                        # Should allow mastercard, AME, etc to be found but still doesnt work... Fix Soon? Manual sucks
                         elif prefixOfNumber.find(prefix):
                             cardInfo["possible_banks"] = card_types.get(prefix)
                         else:
